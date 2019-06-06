@@ -7,7 +7,7 @@ Selenium是一个自动测试框架，有许多功能，我们只需要用到极
 Selenium is a automatic web-testing framework with many features. We only need a few of them.
 
 这个项目是演示了如何用C#和Selenium获取LeetCode上的problem，仅供练习Selenium使用。\
-This project demonstrated how to use C# and Selenium to get the problems on LeetCode. Only for learning Selenium.
+This project demonstrated how to use C# and Selenium to get the problems on LeetCode. **Only for learning Selenium**.
 
 [Experience.md](./Experience.md)是我写这个项目中总结的一些经验。
 [Experience.md](./Experience.md) contains my thoughts when coding this project.
