@@ -22,7 +22,9 @@ This project demonstrated how to use C# and Selenium to get the problems on Leet
 
 ## Build & Run
 
-`dotnet run`
+```bash
+dotnet run
+```
 
 会自动打开FF，自动点击下一页。此时可以用鼠标点到21页加速一下获取过程。没有下一页按钮后自动打开具体的问题页面，获取内容后继续访问下一个。\
 It will open FF automatically. You can click the next button to page 21 to accelerate. It will open specific problem page when the next button disappear, and get the content and access next one.
