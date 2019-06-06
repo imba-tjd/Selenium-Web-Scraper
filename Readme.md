@@ -1,5 +1,7 @@
 # LeetCode Selenium 动态爬虫 / LeetCode Selenium Dynamic Web Scraper
 
+[![Build Status](https://travis-ci.com/imba-tjd/Selenium-Web-Scraper.svg?branch=master)](https://travis-ci.com/imba-tjd/Selenium-Web-Scraper)
+
 有时候网页内容是JS动态生成的，直接用http请求无法获取到。此时可以用Selenium控制浏览器加载网页，获取加载完后的DOM。\
 Sometimes the web page are produced dynamically by JS, which can't be gotten only by https protocol. At this time you can use Selenium to control browser to load web page, and get the loaded DOM.
 
