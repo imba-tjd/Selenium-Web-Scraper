@@ -1,0 +1,96 @@
+放一些写了一半的代码，写不下去了又怕以后会用上。
+Some incomplete and worthless code.
+
+// LCProblems
+
+urls.AddRange(ParseTBody(tbody));
+IEnumerable<string> ParseTBody(IWebElement tbody)
+    => tbody.FindElements(By.CssSelector("tr")).Select(tr => ParseTR(tr));
+public string ParseTR(IWebElement tr)
+    => tr.FindElement(By.CssSelector("a")).GetAttribute("href"); // 结果为完整url
+
+driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
+while (driver.FindElements(By.ClassName("pagination-buttons")).Count == 0)
+{
+    Console.WriteLine("Hi.");
+    continue; // wait for page load, use ImplicitWait time.
+}
+
+var wait = new WebDriverWait(driver, TimeSpan.FromMinutes(1));
+wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+var nextButton = wait.Until(d => d.FindElement(By.CssSelector("tbody.reactable-pagination")));
+
+// LCDemo
+
+Problem ParseDescription(string desc)
+{
+    var problem = new Problem();
+    var root = HtmlNode.CreateNode(desc); // div class="description__24sA"
+    var main = root.FirstChild;
+
+    var questiontitle = main.FirstChild; // div id="question-title"
+    problem.ParseNoAndTitle(questiontitle.InnerText);
+
+    var difficulty = questiontitle.NextSibling.FirstChild; // div diff="easy"
+    problem.ParseDifficulty(difficulty.InnerText);
+
+    var like = difficulty.NextSibling; // button class="btn__r7r7
+    var dislike = like.NextSibling; // button class="btn__r7r7
+    problem.ParseLikeRate(like.InnerText, dislike.InnerText);
+
+    var content = main.NextSibling; // div class="content
+    problem.ParseContent(content.FirstChild.InnerHtml);
+
+    var ac = content.NextSibling.FirstChild.FirstChild; // div style="position>div>div
+    var total = ac.NextSibling;
+    problem.ParseACRate(ac.FirstChild.NextSibling.InnerText, total.FirstChild.NextSibling.InnerText);
+
+    return problem;
+}
+
+public void ParseDescriptionTest()
+{
+    void AssertEqual<T>(T a, T b) => object.Equals(a, b);
+    var stub = new Problem()
+    {
+        No = 1,
+        Title = "Two Sum",
+        Diff = Difficulty.Easy,
+        URL = null,
+        // URL = "https://leetcode.com/problems/two-sum/",
+        ACRate = (double)1804634 / 4086463,
+        LikeRate = (double)10761 / (358 + 10761),
+        Content = @"<p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a
+            specific target.</p>
+
+        <p>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not
+            use the <em>same</em> element twice.</p>
+
+        <p><strong>Example:</strong></p>
+
+        <pre>Given nums = [2, 7, 11, 15], target = 9,
+
+Because nums[<strong>0</strong>] + nums[<strong>1</strong>] = 2 + 7 = 9,
+return [<strong>0</strong>, <strong>1</strong>].
+</pre>
+
+        <p>&nbsp;</p>"
+    };
+    var result = ParseDescription(System.IO.File.ReadAllText("ParseDescriptionTestCase.html"));
+    AssertEqual(stub, result);
+}
+
+void ParseProblemsMulti()
+{
+    var urlQueue = new Queue<string>(urls);
+    while (urlQueue.Count != 0)
+    {
+        if (Driver.Title == string.Empty)
+        {
+            string url = urlQueue.Dequeue();
+            Driver.Navigate().GoToUrl(url);
+        }else
+    }
+    string GetProblemDescriptionNoWait(string url) =>
+        Driver.FindElement(By.CssSelector("div[data-key='description-content']")).GetAttribute("innerHTML");
+}

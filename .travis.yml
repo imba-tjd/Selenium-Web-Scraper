@@ -1,0 +1,8 @@
+language: csharp
+mono: none
+dotnet: 2.2
+dist: xenial
+
+script:
+ - sed -i 's/netcoreapp3.0/netcoreapp2.2/' *.csproj
+ - dotnet build
