@@ -55,4 +55,4 @@ Program -- FFFactory -- LCScrapper -- ParseProblems() -- LCProblemParser -- LCPr
 * FFFactory：创建火狐实例，生成 `IWebDriver` 依赖 / Create instance of FireFox, which implements `IWebDriver`
 * MyWait：`WebDriverWait` 和 `ExpectedConditions` 的包装类 / Wrapper of `WebDriverWait` and `ExpectedConditions`
 * LCScraper：主类。`LoadProblems()` 获取所有问题的URL，`ParseProblems()` 获取问题内容，生成问题对象，`Save()` 保存数据 / Core class. `LoadProblems()` gets problems' URL, `ParseProblems()` gets problems' content, `Save()` saves the data.
-* Demo：一些测试，与程序主体无关，具体见[Demo](./Demo) / Some important tests while which doesn't directly related to core. See [Demo](./Demo) for details.
+* Demo：一些测试，与程序主体无关，具体见[Demo](./Demo) / Some important tests but not directly relate to the core. See [Demo](./Demo) for details.
