@@ -1,4 +1,4 @@
-# LeetCode Selenium 动态爬虫/LeetCode Selenium Dynamic Web Scraper
+# LeetCode Selenium 动态爬虫 / LeetCode Selenium Dynamic Web Scraper
 
 有时候网页内容是JS动态生成的，直接用http请求无法获取到。此时可以用Selenium控制浏览器加载网页，获取加载完后的DOM。\
 Sometimes the web page are produced dynamically by JS, which can't be gotten only by https protocol. At this time you can use Selenium to control browser to load web page, and get the loaded DOM.
@@ -9,7 +9,7 @@ Selenium is a automatic web-testing framework with many features. We only need a
 这个项目是演示了如何用C#和Selenium获取LeetCode上的problem，仅供练习Selenium使用。\
 This project demonstrated how to use C# and Selenium to get the problems on LeetCode. **Only for learning Selenium**.
 
-[Experience.md](./Experience.md)是我写这个项目中总结的一些经验。
+[Experience.md](./Experience.md)是我写这个项目中总结的一些经验。\
 [Experience.md](./Experience.md) contains my thoughts when coding this project.
 
 ## Pre-requests
