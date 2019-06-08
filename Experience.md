@@ -76,11 +76,13 @@ Selenium isn't suited for web scrapper. If you really don't know JS, you'd bette
 ## 关于HtmlAgilityPack/About HtmlAgilityPack
 
 * 没有CSS选择器的API，否则我也不会去用xpath了\
-  Doesn't provide CSS selector API, otherwise I won't use xpath.
+  Doesn't provide CSS selector API, otherwise I won't use xpath
 * 有Element的API，以及有Attribute等属性。但这些文档里都没写
-  There are "Element" and "Attribute" API, but they are undocumented.
-* 相比于[AngleSharp](https://anglesharp.github.io/)，提交更少，功能也更少，但用的人却很多。我不知道为什么。\
-  Compare to AngleSharp, it has less commits and less features, but more people use it. I don't know why.
+  There are "Element" and "Attribute" API, but they are undocumented
+* 相比于[AngleSharp](https://anglesharp.github.io/)，提交更少，功能也更少，但用的人却很多。我不知道为什么\
+  Compare to AngleSharp, it has less commits and less features, but more people use it. I don't know why
+* `HtmlNode.Name` 指的是 *TagName*，而不是tag的*name*属性\
+  `HtmlNode.Name` means  *TagName* rather than the *name* attribute of tag
 
 ## 关于xpath/About xpath
 
