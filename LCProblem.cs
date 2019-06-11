@@ -16,11 +16,10 @@ class LCProblem
     public string Content { get; }
 
     public override string ToString() =>
-        $"{No}, {Title}, {Difficulty}, {ACRate}, {LikeRate}, {URL},";
+        $"{No}, {Title}, {Difficulty}, {ACRate:P}, {LikeRate:P}, {URL},";
 
     public LCProblem(int no, string title, LCDifficulty diffi,
     double acRate, double likeRate, string url, string content) =>
         (No, Title, Difficulty, ACRate, LikeRate, URL, Content) =
         (no, title, diffi, acRate, likeRate, url, content);
-
 }
