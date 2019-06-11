@@ -6,10 +6,12 @@ class MyWait
 {
     WebDriverWait realWait;
     public MyWait(IWebDriver driver) =>
-        realWait = new WebDriverWait(driver, System.TimeSpan.FromSeconds(10));
+        realWait = new WebDriverWait(driver, System.TimeSpan.FromSeconds(15));
 
-    public IWebElement UntilExists(By condition) =>
+    public IWebElement Exists(By condition) =>
         realWait.Until(ExpectedConditions.ElementExists(condition));
-    public IWebElement UntilClickable(IWebElement element) =>
+    public IWebElement Clickable(IWebElement element) =>
         realWait.Until(ExpectedConditions.ElementToBeClickable(element));
+    public TResult Content<TResult>(System.Func<TResult> content) =>
+        realWait.Until(_ => content());
 }

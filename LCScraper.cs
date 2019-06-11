@@ -35,11 +35,11 @@ class LCScrapper : IDisposable
 
         while (true)
         {
-            var tbody = Wait.UntilExists(By.CssSelector("tbody.reactable-data")).GetAttribute("outerHTML");
+            var tbody = Wait.Exists(By.CssSelector("tbody.reactable-data")).GetAttribute("outerHTML");
             urls.AddRange(ParseTBody(HtmlNode.CreateNode(tbody)));
 
             if (Driver.FindElements(By.CssSelector("a.reactable-next-page")) is var nextButton && nextButton.Count != 0)
-                Wait.UntilClickable(nextButton.ElementAt(0)).Click();
+                Wait.Clickable(nextButton.ElementAt(0)).Click();
             else
                 break;
         }
@@ -67,14 +67,15 @@ class LCScrapper : IDisposable
         string GetProblemDescription(string url)
         {
             Driver.Navigate().GoToUrl(url);
-            var query = Wait.UntilExists(By.CssSelector("div[data-key='description-content']"));
+            var query = Wait.Exists(By.CssSelector("div[data-key='description-content']"));
             return query.GetAttribute("innerHTML");
+            // return Wait.Content(() => query.GetAttribute("innerHTML")); // Not sure whether needs waiting
         }
     }
 
     void Save()
     {
-        File.WriteAllLines("LCurl.txt", urls.Select(u => u));
+        File.WriteAllLines("LCUrl.txt", urls.Select(u => u));
         using (var sw = new StreamWriter("LCProblems.csv"))
         {
             sw.WriteLine("No, Title, Difficulty, ACRate, LikeRate, URL,");
