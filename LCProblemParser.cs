@@ -13,21 +13,21 @@ static class LCProblemParser
     }
     static LCDifficulty ParseDifficulty(string text) => Enum.Parse<LCDifficulty>(text);
     static double ParseLikeRate(string like, string dislike) =>
-        int.Parse(like) / (int.Parse(dislike) + int.Parse(like));
+        1.0 * int.Parse(like) / (int.Parse(dislike) + int.Parse(like));
     static double ParseACRate(string ac, string total) =>
-        int.Parse(ac, NumberStyles.Number) / int.Parse(total, NumberStyles.Number);
+        1.0 * int.Parse(ac, NumberStyles.Number) / int.Parse(total, NumberStyles.Number);
     static string ParseContent(string text) => text.Trim();
 
     public static LCProblem Parse(string url, string desc)
     {
         var root = HtmlNode.CreateNode(desc); // div class="description__24sA"
 
-        var titleQuery = root.SelectSingleNode("//div[@id=\"question-title\"]"); // div id="question-title"
+        var titleQuery = root.SelectSingleNode("//div[@id='question-title']"); // div id="question-title"
         var (no, title) = ParseNoAndTitle(titleQuery.InnerText);
         // Console.WriteLine(LCP.No);
         // Console.WriteLine(LCP.Title);
 
-        var diffiQuery = root.SelectSingleNode("//div[@diff=\"easy\"]"); // div diff="easy"
+        var diffiQuery = root.SelectSingleNode("//div[@diff]"); // div diff
         var diffi = ParseDifficulty(diffiQuery.InnerText);
         // Console.WriteLine(LCP.Difficulty);
 
@@ -37,16 +37,16 @@ static class LCProblemParser
         var likeRate = ParseLikeRate(like.InnerText, dislike.InnerText);
         // Console.WriteLine(LCP.LikeRate);
 
-        var contentQuery = root.SelectSingleNode("div[starts-with(@class,\"content\")]"); // div class="content
+        var contentQuery = root.SelectSingleNode("div[starts-with(@class,'content')]"); // div class="content
         var content = ParseContent(contentQuery.SelectSingleNode("div").InnerHtml);
         // Console.WriteLine(LCP.Content);
 
-        var actext = root.SelectSingleNode("//div[@style=\"position: relative;\"]/div"); // div style="position>div>div
+        var actext = root.SelectSingleNode("//div[@style='position: relative;']/div"); // div style="position>div>div
         var ac = actext.SelectSingleNode("div[1]/div[2]");
         var total = actext.SelectSingleNode("div[2]/div[2]");
         var acRate = ParseACRate(ac.InnerText, total.InnerText);
         // Console.WriteLine(LCP.ACRate);
 
-        return new LCProblem(no, title, diffi, acRate, likeRate, url, content);
+        return new LCProblem(no, title, diffi, acRate, likeRate, url.Trim(), content);
     }
 }
