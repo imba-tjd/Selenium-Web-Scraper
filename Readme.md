@@ -26,17 +26,17 @@ This project demonstrated how to use C# and Selenium to get the problems on Leet
 dotnet run
 ```
 
-会自动打开FF，自动点击下一页。此时可以用鼠标点到21页加速一下获取过程。没有下一页按钮后自动打开具体的问题页面，获取内容后继续访问下一个。\
-It will open FF automatically. You can click the next button to page 21 to accelerate. It will open specific problem page when the next button disappear, and get the content and access next one.
+会自动打开FF，自动点击下一页。此时可以用鼠标点到21页加速一下获取过程，或者把 `LoadProblems()` 中的继续条件注释掉。没有下一页按钮后自动打开具体的问题页面，获取内容后继续访问下一个。\
+It will open FF automatically. You can click the next button to page 21 to accelerate, or comment the condition in `LoadProblems()`. It will open specific problem page when the next button disappear, and get the content and access next one.
 
-演示中只会获取5个问题的数据，可以在 [LCScraper.cs](LCScraper.cs) 的 `ParseProblems` 中改。\
-The demo will only get 5 problems' data. You can change it in [LCScraper.cs](LCScraper.cs)'s `ParseProblems`.
+演示中只会获取5个问题的数据，可以在 [LCScraper.cs](LCScraper.cs) 的 `ParseProblems()` 中改。\
+The demo will only get 5 problems' data. You can change it in [LCScraper.cs](LCScraper.cs)'s `ParseProblems()`.
 
-完成后会把数据保存到 `LCurl.txt` 和 `LCProblems.csv` 中。\
-It will save the data to `LCurl.txt` and `LCProblems.csv`.
+完成后会把数据保存到 `LCUrl.txt` 和 `LCProblems.csv` 中。\
+It will save the data to `LCUrl.txt` and `LCProblems.csv`.
 
-另外，有的题目需要会员才能查看，我的代码中没有进行相关的处理，会导致 `GetProblemDescription` 的获取元素失败。\
-There are problems that need LeetCode premium to see. My code didn't handle this. It will fail in `GetProblemDescription` when upcoming this.
+另外，有的题目需要会员才能查看，我的代码中没有进行相关的处理，会导致 `GetProblemDescription()` 的获取元素失败。\
+There are problems that need LeetCode premium to see. My code didn't handle this. It will fail in `GetProblemDescription()` when upcoming this.
 
 ## 项目结构/Project Structure Graphic
 

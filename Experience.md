@@ -88,3 +88,7 @@ Selenium isn't suited for web scrapper. If you really don't know JS, you'd bette
 
 这个东西真的能“往回搜”的。比如已经查询到了某个节点，如果再调用xpath的参数没有以“.”开头，真的会从根开始搜。简直不敢相信。\
 This can really "search back". For example I have already queried a node, if I use xpath without starting with a ".", it would actually search from root, which I'm totally shocked.
+
+## 其它/Others
+
+* <https://phantomjscloud.com/>：使用在别人服务器上运行的PhantomJs
