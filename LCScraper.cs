@@ -75,7 +75,7 @@ class LCScrapper : IDisposable
 
     void Save()
     {
-        File.WriteAllLines("LCUrl.txt", urls.Select(u => u));
+        File.WriteAllLines("LCUrl.txt", urls);
         using (var sw = new StreamWriter("LCProblems.csv"))
         {
             sw.WriteLine("No, Title, Difficulty, ACRate, LikeRate, URL,");
